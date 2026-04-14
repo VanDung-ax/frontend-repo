@@ -6,7 +6,6 @@ import {
   MdBarChart,
   MdCloudUpload,
   MdLogout,
-  MdSettings,
   MdNotifications,
   MdShield,
   MdWarning,
@@ -72,12 +71,6 @@ export default function CovanLayout() {
           ))}
         </nav>
         <div className="sidebar-footer">
-          <button className="nav-item">
-            <span className="nav-icon">
-              <MdSettings />
-            </span>{" "}
-            Cài đặt
-          </button>
           <button className="nav-item" onClick={handleLogout}>
             <span className="nav-icon">
               <MdLogout />

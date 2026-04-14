@@ -8,7 +8,6 @@ import {
   MdManageAccounts,
   MdCloudUpload,
   MdModelTraining,
-  MdSettings,
   MdLogout,
   MdNotifications,
   MdSearch,
@@ -90,12 +89,6 @@ export default function AdminLayout() {
         </nav>
 
         <div className="sidebar-footer">
-          <NavLink to="/admin/settings" className="nav-item">
-            <span className="nav-icon">
-              <MdSettings />
-            </span>{" "}
-            Cài đặt
-          </NavLink>
           <button className="nav-item" onClick={handleLogout}>
             <span className="nav-icon">
               <MdLogout />

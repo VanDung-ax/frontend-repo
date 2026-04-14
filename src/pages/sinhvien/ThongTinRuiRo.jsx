@@ -248,19 +248,7 @@ export default function ThongTinRuiRo() {
         .badge-low { background: #fef9c3; color: #a16207; border: 1px solid #fde047; }
         .badge-high { background: #dcfce7; color: #15803d; border: 1px solid #86efac; }
 
-        .info-pdf-card {
-          background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
-          border-radius: 18px; padding: 20px 16px;
-          display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
-          color: #fff; cursor: pointer; text-align: center;
-          box-shadow: 0 10px 20px rgba(15, 23, 42, 0.3);
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .info-pdf-card:hover {
-          transform: translateY(-6px) scale(1.02);
-          box-shadow: 0 20px 30px rgba(15, 23, 42, 0.4);
-          background: linear-gradient(145deg, #334155 0%, #1e293b 100%);
-        }
+
 
         .warning-list-item {
           background: #fef2f2; border-radius: 12px; padding: 14px 16px;
@@ -335,13 +323,7 @@ export default function ThongTinRuiRo() {
         {tiles.map((t, i) => (
           <IndicatorTile key={i} index={i} {...t} />
         ))}
-        {/* Document Tile */}
-        <div className="info-pdf-card">
-          <span style={{ fontSize: 32 }}>📋</span>
-          <div style={{ fontSize: 12, fontWeight: 800, lineHeight: 1.4, letterSpacing: '0.5px' }}>
-            HỒ SƠ<br/>RỦI RO ĐẦY ĐỦ
-          </div>
-        </div>
+
       </div>
     </div>
   );

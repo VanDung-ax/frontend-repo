@@ -264,7 +264,12 @@ export default function QuanLySinhVien() {
     try {
       const reasons = selected.reasons || [];
       const r = await generateAdvice(selected.MSSV, reasons);
-      setAdvice(r.data?.advice || "Không có lời khuyên.");
+      const newAdvice = r.data?.advice || "Không có lời khuyên.";
+      setAdvice(newAdvice);
+      
+      // Tự động load lại danh sách sinh viên để cập nhật lời khuyên vào 'selected.advices'
+      await loadStudents();
+      
     } catch {
       setAdvice("Lỗi kết nối AI.");
     }

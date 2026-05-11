@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import { login as loginAPI } from "../services/api";
@@ -12,9 +12,13 @@ import {
 } from "react-icons/md";
 
 export default function LoginPage() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  // Đọc thông tin đã lưu từ localStorage (nếu có)
+  const savedCredentials = JSON.parse(localStorage.getItem("remembered_credentials") || "null");
+
+  const [username, setUsername] = useState(savedCredentials?.username || "");
+  const [password, setPassword] = useState(savedCredentials?.password || "");
   const [showPw, setShowPw] = useState(false);
+  const [rememberMe, setRememberMe] = useState(!!savedCredentials);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -28,6 +32,14 @@ export default function LoginPage() {
     try {
       const res = await loginAPI(username, password);
       const userData = res.data;
+
+      // Lưu hoặc xóa thông tin đăng nhập theo checkbox "Ghi nhớ"
+      if (rememberMe) {
+        localStorage.setItem("remembered_credentials", JSON.stringify({ username, password }));
+      } else {
+        localStorage.removeItem("remembered_credentials");
+      }
+
       login(userData);
       if (userData.role === "admin") navigate("/admin/dashboard");
       else if (userData.role === "covan") navigate("/covan/tong-quan");
@@ -156,17 +168,12 @@ export default function LoginPage() {
                   color: "var(--text-secondary)",
                 }}
               >
-                <input type="checkbox" /> Ghi nhớ đăng nhập
+                <input
+                  type="checkbox"
+                  checked={rememberMe}
+                  onChange={(e) => setRememberMe(e.target.checked)}
+                /> Ghi nhớ đăng nhập
               </label>
-              <span
-                style={{
-                  color: "var(--accent)",
-                  fontWeight: 600,
-                  cursor: "pointer",
-                }}
-              >
-                Quên mật khẩu?
-              </span>
             </div>
 
             {error && (
@@ -204,23 +211,7 @@ export default function LoginPage() {
             Hệ thống quản lý nội bộ. Quyền truy cập được giám sát.
           </p>
         </div>
-
-        {/* Footer */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            marginTop: 24,
-            fontSize: 12,
-            color: "rgba(255,255,255,0.4)",
-          }}
-        >
-          <span>© 2024 Hệ thống dự báo REAAC</span>
-          <div style={{ display: "flex", gap: 16 }}>
-            <span style={{ cursor: "pointer" }}>Privacy Policy</span>
-            <span style={{ cursor: "pointer" }}>Terms of Service</span>
-          </div>
-        </div>
+       
         <div style={{ textAlign: "center", marginTop: 12 }}>
           <span
             style={{
@@ -241,7 +232,6 @@ export default function LoginPage() {
               }}
             />
             HỆ THỐNG ĐANG HOẠT ĐỘNG
-            <span style={{ marginLeft: 8 }}>v2.4.0-release</span>
           </span>
         </div>
       </div>

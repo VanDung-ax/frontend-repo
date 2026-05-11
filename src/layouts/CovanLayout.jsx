@@ -6,7 +6,6 @@ import {
   MdBarChart,
   MdCloudUpload,
   MdLogout,
-  MdNotifications,
   MdShield,
   MdWarning,
 } from "react-icons/md";
@@ -85,9 +84,6 @@ export default function CovanLayout() {
           <div className="topbar-left">
           </div>
           <div className="topbar-right">
-            <button className="icon-btn">
-              <MdNotifications />
-            </button>
             <div className="topbar-user">
               <div style={{ textAlign: "right" }}>
                 <div className="user-name">

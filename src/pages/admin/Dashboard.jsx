@@ -115,7 +115,6 @@ export default function Dashboard() {
           <div className="metric-value">
             {stats.total_sinhvien?.toLocaleString()}
           </div>
-          <div className="metric-sub">+2.4% so với kỳ trước</div>
           <div className="metric-icon">
             <MdPeople />
           </div>
@@ -146,7 +145,6 @@ export default function Dashboard() {
         <div className="metric-card dark">
           <div className="metric-label">Điểm rủi ro TB</div>
           <div className="metric-value">{avgScore}</div>
-          <div className="metric-sub">Ngưỡng an toàn: &lt; 30.0</div>
           <div className="metric-icon">
             <MdAnalytics />
           </div>

@@ -9,7 +9,6 @@ import {
   MdCloudUpload,
   MdModelTraining,
   MdLogout,
-  MdNotifications,
   MdSearch,
   MdShield,
 } from "react-icons/md";
@@ -69,8 +68,8 @@ export default function AdminLayout() {
           <div className="logo-icon">
             <MdShield />
           </div>
-          <div className="logo-title">ADMIN </div>
-          <div className="logo-sub">Early warning system</div>
+          <div className="logo-title">PHÒNG ĐÀO TẠO </div>
+          <div className="logo-sub">HỆ THỐNG DỰ BÁO RỦI RO HỌC TẬP </div>
         </div>
 
         <nav className="sidebar-nav">
@@ -103,9 +102,6 @@ export default function AdminLayout() {
         <header className="topbar">
           <div className="topbar-left"></div>
           <div className="topbar-right">
-            <button className="icon-btn">
-              <MdNotifications />
-            </button>
             <div className="topbar-user">
               <div style={{ textAlign: "right" }}>
                 <div className="user-name">
